@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+articles
+{% endblock %}
+
+{% block content %}
+
+<h1>Articles List</h1>
+<div class="articles">
+  {% for article in articles %}
+  <div class="article">
+    {# one div for each article so it can be easily used in styles #}
+    <h2><a href="{% url 'articles:detail' slug=article.slug %}">{{article.title}}</a></h2>
+    {# links to each slug from article property #}
+    <p>{{article.snippet}}</p>
+    <p>{{article.date}}</p>
+    <p class="author">added by {{article.author.username}}</p>
+  </div>
+  {% endfor %}
+  {# get a list of articles and show it to user, using 'articles' file from view.py #}
+</div>
+
+{% endblock %}
